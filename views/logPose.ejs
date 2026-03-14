@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="retro">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="main.css">
+</head>
+<body class="p-4 container mx-auto">
+    <%- include('partials/navbar') %>
+
+    <div class="alert shadow-lg bg-info text-info-content mb-8">
+        <div>
+            <h3 class="font-bold">Encrypted Connection Established</h3>
+            <div class="text-xs font-mono"><%= log %></div>
+        </div>
+    </div>
+
+    <div class="card w-full bg-base-300 shadow-xl image-full mb-10">
+        <div class="card-body items-center text-center">
+            <h1 class="card-title text-7xl font-black text-white">DESTINATION: LAUGH TALE</h1>
+            <p class="text-xl">The Will of D. has guided you through the Marines.</p>
+        </div>
+    </div>
+
+    <h3 class="text-3xl font-black mb-6 text-secondary uppercase">Active Crew Present:</h3>
+    <div class="flex flex-wrap gap-4">
+        <% for(let member of crew) { %>
+            <% if(member.status === "active") { %>
+                <div class="badge badge-outline badge-lg p-6 font-bold"><%= member.name %></div>
+            <% } %>
+        <% } %>
+    </div>
+</body>
+</html>

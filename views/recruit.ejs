@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="retro">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="main.css">
+</head>
+<body class="p-4 container mx-auto">
+    <%- include('partials/navbar') %>
+
+    <div class="max-w-2xl mx-auto card bg-base-200 shadow-2xl p-10 border-2 border-primary">
+        <h2 class="text-4xl font-black mb-8 text-center text-primary uppercase">Join the Crew</h2>
+
+        <% if (error) { %>
+            <div class="alert alert-error mb-6">
+                <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                <span><%= error %></span>
+            </div>
+        <% } %>
+
+        <form action="/recruit" method="POST" class="space-y-6">
+            <div class="form-control">
+                <label class="label"><span class="label-text font-bold">Your Name</span></label>
+                <input type="text" name="applicantName" placeholder="Zoro" class="input input-bordered focus:input-primary" />
+            </div>
+
+            <div class="form-control">
+                <label class="label"><span class="label-text font-bold">Special Skill</span></label>
+                <input type="text" name="skill" placeholder="3-Sword Style" class="input input-bordered focus:input-primary" />
+            </div>
+
+            <div class="form-control">
+                <label class="label"><span class="label-text font-bold">Desired Role</span></label>
+                <select name="role" class="select select-bordered focus:select-primary">
+                    <option disabled selected>Select a role</option>
+                    <option>Navigator</option>
+                    <option>Cook</option>
+                    <option>Sniper</option>
+                    <option>Doctor</option>
+                    <option>Musician</option>
+                    <option>Other</option>
+                </select>
+            </div>
+
+            <div class="form-control">
+                <label class="label"><span class="label-text font-bold">Why join Luffy?</span></label>
+                <textarea name="message" class="textarea textarea-bordered h-24 focus:textarea-primary" placeholder="I have a dream..."></textarea>
+            </div>
+
+            <div class="form-control">
+                <label class="label"><span class="label-text font-bold">Preferred Sea</span></label>
+                <div class="grid grid-cols-2 gap-2 bg-base-100 p-4 rounded-lg">
+                    <label class="label cursor-pointer space-x-2">
+                        <input type="radio" name="sea" value="East Blue" class="radio radio-primary" />
+                        <span class="label-text">East Blue</span>
+                    </label>
+                    <label class="label cursor-pointer space-x-2">
+                        <input type="radio" name="sea" value="West Blue" class="radio radio-primary" />
+                        <span class="label-text">West Blue</span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="form-control">
+                <label class="label cursor-pointer justify-start space-x-4">
+                    <input type="checkbox" name="agreeTerms" class="checkbox checkbox-primary" />
+                    <span class="label-text font-semibold">I understand the risks of the Grand Line</span>
+                </label>
+            </div>
+
+            <button type="submit" class="btn btn-primary w-full btn-lg font-black uppercase">Submit Application</button>
+        </form>
+    </div>
+</body>
+</html>

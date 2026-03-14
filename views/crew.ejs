@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="retro">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="main.css">
+</head>
+<body class="p-4 container mx-auto">
+    <%- include('partials/navbar') %>
+
+    <div class="bg-base-100 rounded-box p-6 shadow-2xl">
+        <h2 class="text-3xl font-bold mb-6 underline decoration-primary">Official Crew Roster</h2>
+        <div class="overflow-x-auto">
+            <table class="table table-zebra w-full">
+                <thead>
+                    <tr class="bg-primary text-primary-content">
+                        <th>#</th>
+                        <th>Name</th>
+                        <th>Role</th>
+                        <th>Bounty</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% crew.forEach((member, index) => { %>
+                    <tr class="hover">
+                        <td><%= index + 1 %></td>
+                        <td class="font-bold"><%= member.name %></td>
+                        <td><%= member.role %></td>
+                        <td class="font-mono"><%= member.bounty %></td>
+                        <td>
+                            <% if (member.status === 'active') { %>
+                                <span class="badge badge-success text-white">Active</span>
+                            <% } else if (member.status === 'inactive') { %>
+                                <span class="badge badge-error text-white">Bounty Frozen</span>
+                            <% } else { %>
+                                <span class="badge badge-warning">Pending</span>
+                            <% } %>
+                        </td>
+                    </tr>
+                    <% }); %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
